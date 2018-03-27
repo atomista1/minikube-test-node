@@ -10,7 +10,7 @@
 
   :container {:name "minikube-test-node"
               :dockerfile "/docker"
-              :hub "slimslenderslacks"}
+              :hub "sforzando-dockerv2-local.jfrog.io"}
 
   :profiles {:dev {:dependencies [[javax.servlet/javax.servlet-api "3.1.0"]
                                   [cheshire "5.5.0"]
