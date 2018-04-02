@@ -1,1 +1,1 @@
-sforzando-dockerv2-local.jfrog.io/minikube-test-node:0.12.14
+sforzando-dockerv2-local.jfrog.io/minikube-test-node:0.12.15
