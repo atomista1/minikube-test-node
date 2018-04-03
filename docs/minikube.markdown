@@ -42,10 +42,6 @@ kubectl --namespace=k8-automation create secret generic automation --from-litera
 ```
 kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/assets/kube/namespace.yaml
 
-# replace token!!!
-kubectl --namespace=k8-automation create secret generic automation \
-        --from-literal=config='{"teamIds":["ANBD24ZEC"],"token":"XXXXXXXX","custom":{"hostUrl":"https://192.168.99.100","imagePullSecret":"artifactory","namespace":"splunk"}}'
-
 # replace all fields here!!!!
 kubectl --namespace=splunk create secret generic registry \
         --from-literal=registry=sforzando-dockerv2-local.jfrog.io \
