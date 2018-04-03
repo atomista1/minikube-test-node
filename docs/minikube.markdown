@@ -49,10 +49,13 @@ kubectl --namespace=splunk create secret generic registry \
         --from-literal=password=XXXXXXX \
         --from-literal=email=jim@atomist.com \
 
-# replace token again!!!! (same as above)
+# replace token again!!!! XXXXXXXX is the Atomist token, and YYYYYY is the GitHub token
 kubectl --namespace=splunk create secret generic atomist \
-        --from-literal=team=ANBD24ZEC --from-literal=token=XXXXXXXXX
+        --from-literal=team=ANBD24ZEC \
+        --from-literal=token=XXXXXXXXX \
+        --from-literal=github=YYYYYYYY
 
+kubectl delete -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/assets/kube/builder.yaml
 kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/assets/kube/builder.yaml
 ```
 
