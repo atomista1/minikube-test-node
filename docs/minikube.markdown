@@ -1,3 +1,5 @@
+# minikube
+
 ## minikube setup
 
 ```
@@ -31,7 +33,7 @@ curl -sL https://raw.githubusercontent.com/atomist/k8vent/master/kube/deployment
 ```
 kubectl apply -f https://raw.githubusercontent.com/atomist/k8-automation/master/assets/kube/namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/atomist/k8-automation/master/assets/kube/rbac.yaml
-kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/assets/kube/k8-automation-rbac.yaml
+kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/minikube/k8-automation-rbac.yaml
 kubectl --namespace=k8-automation delete secret automation
 kubectl --namespace=k8-automation create secret generic automation --from-literal=config='{"teamIds":["ANBD24ZEC"],"token":"xxxxxxxxxx","custom":{"hostUrl":"https://192.168.99.100","imagePullSecret":"artifactory","namespace":"splunk"}}'
 ```
@@ -39,7 +41,7 @@ kubectl --namespace=k8-automation create secret generic automation --from-litera
 ## Docker Image builder
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/assets/kube/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/minikube/namespace.yaml
 
 # replace all fields here!!!!
 kubectl --namespace=splunk create secret generic registry \
@@ -54,8 +56,8 @@ kubectl --namespace=splunk create secret generic atomist \
         --from-literal=token=XXXXXXXXX \
         --from-literal=github=YYYYYYYY
 
-kubectl delete -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/assets/kube/builder.yaml
-kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/assets/kube/builder.yaml
+kubectl delete -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/minikube/builder.yaml
+kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/minikube/builder.yaml
 ```
 
 ## tailing logs
@@ -65,23 +67,4 @@ Tail logs for both the k8-automation and the micro-srv-automation to watch Atomi
 ```
 kubectl --namespace=k8-automation logs -f k8-automation-6d5db5b98d-s676x
 kubectl --namespace=splunk logs -f micro-srv-automation-5846446b76-jbdwh
-```
-
-## playground setup
-
-## k8vent
-
-```
-kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/kube/k8vent/rbac.yaml
-curl -sL https://raw.githubusercontent.com/atomista1/minikube-test-node/master/kube/k8vent/deployment-rbac.yaml \
-  | sed -e 's/T0REPLACE/ANBD24ZEC/g' -e 's/ENV_REPLACE/playground/g' | kubectl apply -f -
-```
-
-## k8-automation
-
-```
-kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/kube/k8-automation/rbac.yaml
-kubectl --namespace=default delete secret automation
-kubectl --namespace=default create secret generic automation --from-literal=config='{"teamIds":["ANBD24ZEC"],"token":"xxxxxxxxxx","custom":{"hostUrl":"https://PLAYGROUND_INGRESS_HOST_OR_IP","imagePullSecret":"artifactory","namespace":"default"}}'
-kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/kube/k8-automation/deployment-rbac.yaml
 ```
