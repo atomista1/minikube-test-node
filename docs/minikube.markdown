@@ -32,7 +32,7 @@ curl -sL https://raw.githubusercontent.com/atomista1/minikube-test-node/master/k
 kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/kube/k8-automation/rbac.yaml
 kubectl --namespace=default delete secret automation
 kubectl --namespace=default create secret generic automation --from-literal=config='{"teamIds":["ANBD24ZEC"],"token":"xxxxxxxxxx","custom":{"hostUrl":"https://PLAYGROUND_INGRESS_HOST_OR_IP","imagePullSecret":"artifactory","namespace":"default"}}'
-kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/kube/k8-automation/k8-automation-rbac.yaml
+kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/kube/k8-automation/deployment-rbac.yaml
 ```
 
 ## Docker Image builder
