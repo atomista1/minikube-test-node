@@ -29,11 +29,10 @@ curl -sL https://raw.githubusercontent.com/atomista1/minikube-test-node/master/k
 ## k8-automation
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/atomist/k8-automation/master/assets/kube/namespace.yaml
-kubectl apply -f https://raw.githubusercontent.com/atomist/k8-automation/master/assets/kube/rbac.yaml
-kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/assets/kube/k8-automation-rbac.yaml
-kubectl --namespace=k8-automation delete secret automation
-kubectl --namespace=k8-automation create secret generic automation --from-literal=config='{"teamIds":["ANBD24ZEC"],"token":"xxxxxxxxxx","custom":{"hostUrl":"https://192.168.99.100","imagePullSecret":"artifactory","namespace":"splunk"}}'
+kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/kube/k8-automation/rbac.yaml
+kubectl --namespace=default delete secret automation
+kubectl --namespace=default create secret generic automation --from-literal=config='{"teamIds":["ANBD24ZEC"],"token":"xxxxxxxxxx","custom":{"hostUrl":"https://PLAYGROUND_INGRESS_HOST_OR_IP","imagePullSecret":"artifactory","namespace":"default"}}'
+kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/kube/k8-automation/k8-automation-rbac.yaml
 ```
 
 ## Docker Image builder
