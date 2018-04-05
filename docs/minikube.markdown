@@ -21,7 +21,7 @@ I am using `minikube version: v.25.0`.
 ## k8vent
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/atomist/k8vent/master/kube/namespace.yml
+kubectl apply -f https://raw.githubusercontent.com/atomist/k8vent/master/kube/namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/atomist/k8vent/master/kube/rbac.yaml
 curl -sL https://raw.githubusercontent.com/atomist/k8vent/master/kube/deployment-rbac.yaml \
   | sed -e 's/T0REPLACE/ANBD24ZEC/g' -e 's/ENV_REPLACE/production/g' | kubectl apply -f -
