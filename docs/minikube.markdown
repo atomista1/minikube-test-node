@@ -21,10 +21,9 @@ I am using `minikube version: v.25.0`.
 ## k8vent
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/atomist/k8vent/master/kube/namespace.yml
-kubectl apply -f https://raw.githubusercontent.com/atomist/k8vent/master/kube/rbac.yaml
-curl -sL https://raw.githubusercontent.com/atomist/k8vent/master/kube/deployment-rbac.yaml \
-  | sed -e 's/T0REPLACE/ANBD24ZEC/g' -e 's/ENV_REPLACE/production/g' | kubectl apply -f -
+kubectl apply -f https://raw.githubusercontent.com/atomista1/minikube-test-node/master/kube/k8vent/rbac.yaml
+curl -sL https://raw.githubusercontent.com/atomista1/minikube-test-node/master/kube/k8vent/deployment-rbac.yaml \
+  | sed -e 's/T0REPLACE/ANBD24ZEC/g' -e 's/ENV_REPLACE/playground/g' | kubectl apply -f -
 ```
 
 ## k8-automation
